@@ -1,8 +1,11 @@
+import 'package:cartola/models/player_scaled.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PlayerCard extends StatelessWidget {
-  const PlayerCard({Key? key}) : super(key: key);
+  PlayerCard({Key? key}) : super(key: key);
+
+  PlayerScaled player = PlayerScaled();
 
   Padding _getImage() {
     return Padding(
