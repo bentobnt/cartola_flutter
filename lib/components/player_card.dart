@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PlayerCard extends StatelessWidget {
-  PlayerCard({Key? key}) : super(key: key);
+  PlayerScaled player;
 
-  PlayerScaled player = PlayerScaled();
+  PlayerCard({Key? key, required this.player}) : super(key: key);
+
+  String replaceImageURL(String url) {
+    url = url.replaceAll("FORMATO", "140x140");
+    return url;
+  }
 
   Padding _getImage() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
       child: Image.network(
-        "https://s.glbimg.com/es/sde/f/2022/02/21/82bd262ef647de7255e8df06fdd8e3f2_140x140.png",
+        replaceImageURL(player.atleta?.foto ?? ""),
         width: 100,
-        height: 100,
       ),
     );
   }
@@ -28,7 +32,7 @@ class PlayerCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Piquerez",
+                player.atleta?.apelido ?? "",
                 style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
               ),
               Padding(
@@ -37,7 +41,7 @@ class PlayerCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      "LAT",
+                      player.posicaoAbreviacao ?? "",
                       style: GoogleFonts.roboto(
                         fontWeight: FontWeight.w800,
                         fontSize: 12,
@@ -47,7 +51,7 @@ class PlayerCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: Text(
-                        "Palmeiras",
+                        player.clubeNome ?? "",
                         style: GoogleFonts.roboto(
                           fontSize: 12,
                           color: Colors.grey,
@@ -66,7 +70,7 @@ class PlayerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "30",
+                  player.escalacoes.toString() ?? "0",
                   style: GoogleFonts.roboto(
                     fontSize: 11,
                     color: Colors.grey,
