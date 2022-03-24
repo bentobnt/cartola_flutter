@@ -33,7 +33,9 @@ class PlayerCard extends StatelessWidget {
             children: [
               Text(
                 player.atleta?.apelido ?? "",
-                style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+                style: GoogleFonts.roboto(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 3),
@@ -70,7 +72,7 @@ class PlayerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  player.escalacoes.toString() ?? "0",
+                  player.escalacoes.toString(),
                   style: GoogleFonts.roboto(
                     fontSize: 11,
                     color: Colors.grey,

@@ -1,5 +1,5 @@
 import 'package:cartola/components/player_card.dart';
-import 'package:cartola/controllers/player_list_controller.dart';
+import 'package:cartola/controllers/PlayerList/player_list_controller.dart';
 import 'package:cartola/models/player_scaled.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +11,38 @@ class PlayersList extends StatefulWidget {
 }
 
 class _PlayersListState extends State<PlayersList> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(230, 230, 230, 1),
       appBar: AppBar(
-        title: Text("Cartola"),
+        title: const Text("Cartola"),
         backgroundColor: Colors.orange,
       ),
       body: const ListCards(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: '+ Escalados',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_rounded),
+            label: 'Partidas',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.orange,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
@@ -62,3 +85,18 @@ class _ListCardsState extends State<ListCards> {
     );
   }
 }
+
+
+/*
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    
+  }
+}
+
+
+*/
