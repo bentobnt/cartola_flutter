@@ -1,6 +1,6 @@
 # cartola
 
-A new Flutter project.
+A new Flutter project for team learn the language.
 
 ## Getting Started
 
